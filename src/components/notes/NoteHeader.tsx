@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SunMoon, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MainNav from "@/components/MainNav";
+import { useNavigate } from "react-router-dom";
 
 interface NoteHeaderProps {
   theme: string;
@@ -11,12 +12,14 @@ interface NoteHeaderProps {
 }
 
 export default function NoteHeader({ theme, toggleTheme, createNewNote }: NoteHeaderProps) {
+  const navigate = useNavigate();
+  
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mr-8">
+            <Link to="/notes" className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mr-8">
               All Notes
             </Link>
             <MainNav />
