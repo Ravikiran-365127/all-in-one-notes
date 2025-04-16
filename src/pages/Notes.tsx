@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -24,7 +23,7 @@ import {
   Bell,
   Users,
   Code,
-  Sync,
+  RefreshCw,
   PlusCircle,
   Save,
   Edit,
