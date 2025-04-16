@@ -22,7 +22,7 @@ export default function NoteHeader({ theme, toggleTheme, createNewNote }: NoteHe
             <MainNav />
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" onClick={toggleTheme}>
+            <Button variant="ghost" size="icon" onClick={toggleTheme} title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
               <SunMoon className="h-5 w-5" />
             </Button>
             <Button variant="outline" onClick={createNewNote} className="flex items-center gap-2">

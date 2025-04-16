@@ -13,7 +13,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import NoteDemo from "@/components/NoteDemo";
 import FeatureCard from "@/components/FeatureCard";
-import PricingCard from "@/components/PricingCard";
 import TestimonialCard from "@/components/TestimonialCard";
 
 export default function Index() {
@@ -90,55 +89,6 @@ export default function Index() {
     }
   ];
   
-  // Pricing options
-  const pricingOptions = [
-    {
-      title: "Free",
-      price: "$0",
-      description: "Basic note-taking for individuals",
-      features: [
-        "Unlimited basic notes",
-        "3 notebooks",
-        "Basic text formatting",
-        "Mobile and web access"
-      ],
-      cta: "Get Started",
-      popular: false
-    },
-    {
-      title: "Pro",
-      price: "$8",
-      period: "/month",
-      description: "Advanced features for power users",
-      features: [
-        "Everything in Free",
-        "Unlimited notebooks",
-        "Full multimedia support",
-        "Advanced organization",
-        "AI-powered search",
-        "Priority support"
-      ],
-      cta: "Go Pro",
-      popular: true
-    },
-    {
-      title: "Team",
-      price: "$15",
-      period: "/user/month",
-      description: "Collaborative tools for teams",
-      features: [
-        "Everything in Pro",
-        "Team collaboration",
-        "Shared workspaces",
-        "Version history",
-        "Admin controls",
-        "SSO integration"
-      ],
-      cta: "Try for Teams",
-      popular: false
-    }
-  ];
-
   // Testimonials
   const testimonials = [
     {
@@ -183,12 +133,16 @@ export default function Index() {
                 </span>
               </div>
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white">
-                  Get Started
-                  <ChevronRight className="ml-2 h-4 w-4" />
+                <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white" asChild>
+                  <Link to="/notes">
+                    Get Started
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
-                <Button size="lg" variant="outline">
-                  Watch Demo
+                <Button size="lg" variant="outline" asChild>
+                  <Link to="/notes">
+                    Watch Demo
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -393,8 +347,10 @@ export default function Index() {
           </div>
           
           <div className="mt-12 flex justify-center">
-            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white">
-              Try It Free
+            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white" asChild>
+              <Link to="/notes">
+                Try It Free
+              </Link>
             </Button>
           </div>
         </div>
@@ -431,40 +387,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-white dark:bg-slate-900">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-indigo-100 px-3 py-1 text-sm text-indigo-700 dark:bg-indigo-700/20 dark:text-indigo-300">
-                Pricing
-              </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Choose Your Plan
-              </h2>
-              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                Simple pricing plans for individuals and teams of all sizes.
-              </p>
-            </div>
-          </div>
-          
-          <div className="mt-16 grid gap-8 md:grid-cols-3">
-            {pricingOptions.map((plan, index) => (
-              <PricingCard
-                key={index}
-                title={plan.title}
-                price={plan.price}
-                period={plan.period}
-                description={plan.description}
-                features={plan.features}
-                cta={plan.cta}
-                popular={plan.popular}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-indigo-600 text-white">
         <div className="container px-4 md:px-6">
@@ -478,11 +400,15 @@ export default function Index() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row lg:justify-end">
-              <Button size="lg" className="bg-white text-indigo-600 hover:bg-indigo-100">
-                Get Started Free
+              <Button size="lg" className="bg-white text-indigo-600 hover:bg-indigo-100" asChild>
+                <Link to="/notes">
+                  Get Started Free
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-indigo-500">
-                Schedule a Demo
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-indigo-500" asChild>
+                <Link to="/notes">
+                  Try Demo
+                </Link>
               </Button>
             </div>
           </div>
@@ -503,24 +429,24 @@ export default function Index() {
               <h3 className="text-lg font-medium mb-4">Product</h3>
               <ul className="space-y-2">
                 <li><Link to="#features" className="hover:text-indigo-300">Features</Link></li>
-                <li><Link to="#pricing" className="hover:text-indigo-300">Pricing</Link></li>
-                <li><Link to="#" className="hover:text-indigo-300">Download</Link></li>
+                <li><Link to="/notes" className="hover:text-indigo-300">Try Notes</Link></li>
+                <li><Link to="/notes" className="hover:text-indigo-300">Download</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-medium mb-4">Resources</h3>
               <ul className="space-y-2">
-                <li><Link to="#" className="hover:text-indigo-300">Blog</Link></li>
-                <li><Link to="#" className="hover:text-indigo-300">Documentation</Link></li>
-                <li><Link to="#" className="hover:text-indigo-300">Community</Link></li>
+                <li><Link to="/notes" className="hover:text-indigo-300">Blog</Link></li>
+                <li><Link to="/notes" className="hover:text-indigo-300">Documentation</Link></li>
+                <li><Link to="/notes" className="hover:text-indigo-300">Community</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-medium mb-4">Company</h3>
               <ul className="space-y-2">
-                <li><Link to="#" className="hover:text-indigo-300">About Us</Link></li>
-                <li><Link to="#" className="hover:text-indigo-300">Careers</Link></li>
-                <li><Link to="#" className="hover:text-indigo-300">Contact</Link></li>
+                <li><Link to="/notes" className="hover:text-indigo-300">About Us</Link></li>
+                <li><Link to="/notes" className="hover:text-indigo-300">Careers</Link></li>
+                <li><Link to="/notes" className="hover:text-indigo-300">Contact</Link></li>
               </ul>
             </div>
           </div>

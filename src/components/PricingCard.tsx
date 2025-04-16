@@ -23,6 +23,10 @@ const PricingCard = ({
   cta,
   popular = false
 }: PricingCardProps) => {
+  // Modified to make all plans free
+  const displayPrice = "$0";
+  const displayPeriod = "";
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -49,8 +53,8 @@ const PricingCard = ({
       <div className="mb-4">
         <h3 className="text-2xl font-bold">{title}</h3>
         <div className="mt-2 flex items-baseline">
-          <span className="text-3xl font-bold">{price}</span>
-          {period && <span className="ml-1 text-gray-500">{period}</span>}
+          <span className="text-3xl font-bold">{displayPrice}</span>
+          <span className="ml-1 text-gray-500">{displayPeriod}</span>
         </div>
         <p className="mt-2 text-gray-500 dark:text-gray-400">{description}</p>
       </div>
@@ -73,8 +77,9 @@ const PricingCard = ({
             ? "bg-indigo-600 hover:bg-indigo-700 text-white"
             : "bg-white text-indigo-600 border-indigo-600 hover:bg-indigo-50 dark:bg-slate-900 dark:text-indigo-400 dark:border-indigo-500 dark:hover:bg-indigo-950/50"
         )}
+        asChild
       >
-        {cta}
+        <a href="/notes">{cta}</a>
       </Button>
     </motion.div>
   );
